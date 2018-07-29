@@ -33,6 +33,6 @@ server = xmlrpc.client.ServerProxy("http://www.pythonchallenge.com/pc/phonebook.
 result = server.phone("Leopold")  # Mozart's father
 print(result)  # 555-VIOLIN
 
-header['Cookie'] = 'info=the+flowers+are+on+their+way'
-response = requests.get('http://www.pythonchallenge.com/pc/stuff/violin.php', headers=header)
+cookie = {'info': 'the+flowers+are+on+their+way'}
+response = requests.get('http://www.pythonchallenge.com/pc/stuff/violin.php', cookies=cookie)
 print(response.content)  # oh well, don\'t you dare to forget the balloons.
