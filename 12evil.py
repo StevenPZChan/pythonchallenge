@@ -7,8 +7,8 @@ from PIL import Image, ImageFile
 header = {'Authorization': 'Basic aHVnZTpmaWxl', }
 response = requests.get('http://www.pythonchallenge.com/pc/return/evil2.gfx', headers=header)
 data = response.content
-print(requests.get('http://www.pythonchallenge.com/pc/return/evil4.jpg',
-    headers=header).content)  # Bert is evil! go back!  -->Hints for next problem
+print(requests.get('http://www.pythonchallenge.com/pc/return/evil4.jpg', headers=header).content)
+# Bert is evil! go back!  -->Hints for next problem
 
 if not os.path.exists('evil'):
     os.makedirs('evil')

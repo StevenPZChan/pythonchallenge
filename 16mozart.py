@@ -8,11 +8,13 @@ response = requests.get('http://www.pythonchallenge.com/pc/return/mozart.gif', h
 img = Image.open(BytesIO(response.content))
 img = img.convert('RGB')
 
-img_new = Image.new('RGB', img.size)
+img_new = img.copy()
 
 for y in range(img_new.height):
-    symbol_pos = [x for x in range(img.width) if
-        img.getpixel((x, y))[0] == img.getpixel((x, y))[2] == 255 and img.getpixel((x, y))[1] == 0]
+    symbol_pos = []
+    for x in range(img.width):
+        if img.getpixel((x, y))[0] == img.getpixel((x, y))[2] == 255 and img.getpixel((x, y))[1] == 0:
+            symbol_pos.append(x)
     move_style = list(range(img_new.width))
     move_style = move_style[symbol_pos[2]:] + move_style[:symbol_pos[2]]
     for x in range(img_new.width):

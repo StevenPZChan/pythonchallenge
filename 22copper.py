@@ -1,9 +1,8 @@
-import itertools
 from collections import Counter
 from io import BytesIO
 
 import requests
-from PIL import Image, ImageSequence, ImageDraw
+from PIL import Image, ImageDraw, ImageSequence
 
 header = {'Authorization': 'Basic YnV0dGVyOmZseQ==', }  # 'YnV0dGVyOmZseQ==' is base64.encode('butter:fly')
 response = requests.get('http://www.pythonchallenge.com/pc/hex/white.gif', headers=header)

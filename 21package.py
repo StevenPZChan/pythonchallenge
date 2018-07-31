@@ -1,5 +1,5 @@
-import zlib
 import bz2
+import zlib
 
 logs = []
 

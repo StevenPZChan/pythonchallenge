@@ -21,7 +21,8 @@ for i in range(10):
     private.extend(response.content)
 
 print(bytes(private))
-# "Why don't you respect my privacy?\nwe can go on in this way for really long time.\nstop this!\ninvader! invader!\nok, invader. you are inside now. \n"
+# "Why don't you respect my privacy?\nwe can go on in this way for really long time.\nstop this!\ninvader!
+# invader!\nok, invader. you are inside now. \n"
 
 header['Range'] = f'bytes={total_bytes}-'
 response = requests.get('http://www.pythonchallenge.com/pc/hex/unreal.jpg', headers=header)
@@ -44,7 +45,6 @@ with open('invader.zip', 'wb') as f:
 
 if not os.path.exists('invader'):
     os.makedirs('invader')
-fz = zipfile.ZipFile('invader.zip', 'r')
-for file in fz.namelist():
-    fz.extract(file, 'invader', pwd='redavni'.encode('utf-8'))
-# Got level 21
+with zipfile.ZipFile('invader.zip', 'r') as f:
+    for file in f.namelist():
+        f.extract(file, 'invader', pwd='redavni'.encode('utf-8'))  # Got level 21
