@@ -26,8 +26,8 @@ print('total:', num_data, '=', end=' ')
 prime_factor(num_data)  # 7367 = 53 * 139
 
 img = Image.new('F', (139, 53))
-for i in range(num_data):
-    img.putpixel((i // img.height, i % img.height), 256 * float(data[i]))
+for ind in range(num_data):
+    img.putpixel((ind // img.height, ind % img.height), 256 * float(data[ind]))
 img.show()  # n=str(x[i])[5]+str(x[i+1])[5]+str(x[i+2])[6]
 
 x = [f'{float(s):.5f}' for s in data]

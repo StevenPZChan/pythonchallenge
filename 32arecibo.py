@@ -8,23 +8,24 @@ header = {'Authorization': 'Basic a29oc2FtdWk6dGhhaWxhbmQ=', }
 
 
 def split_data(data):
-    split_data = {}
+    splits = {}
+    key = None
     for f in data:
         if re.match(r'# Dimension', f):
             key = 'd'
-            split_data[key] = []
+            splits[key] = []
         elif re.match(r'# Horizon', f):
             key = 'h'
-            split_data[key] = []
+            splits[key] = []
         elif re.match(r'# Vertical', f):
             key = 'v'
-            split_data[key] = []
+            splits[key] = []
         elif f:
             d = [int(s) for s in f.split()]
-            split_data[key].append(d)
+            splits[key].append(d)
 
-    print(split_data)
-    return split_data
+    print(splits)
+    return splits
 
 
 response = requests.get('http://www.pythonchallenge.com/pc/rock/warmup.txt', headers=header)

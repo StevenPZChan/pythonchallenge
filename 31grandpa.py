@@ -18,16 +18,17 @@ def iter_point(c):
     z = c
     i = 0
     for i in range(iterations):
-        if abs(z) > 2: break
+        if abs(z) > 2:
+            break
         z = z * z + c
     return i
 
 
-def draw_mandelbrot(left, top, width, height):
+def draw_mandelbrot(m_left, m_top, m_width, m_height):
     mandelbrot = []
     for y in range(img.height - 1, -1, -1):
         for x in range(img.width):
-            c = complex(left + x * width / img.width, top + y * height / img.height)
+            c = complex(m_left + x * m_width / img.width, m_top + y * m_height / img.height)
             mandelbrot.append(iter_point(c))
 
     img_new.putdata(mandelbrot)
