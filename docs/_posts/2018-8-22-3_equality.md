@@ -1,0 +1,52 @@
+---
+title: '#3'
+layout: post
+categories: python
+tags:
+  - python
+  - challenge
+last_modified_at: 2018-08-22T09:50:00+08:00
+---
+继续挑战
+
+---
+### 第3题地址[equality.html](http://www.pythonchallenge.com/pc/def/equality.html)
+* <img src="http://www.pythonchallenge.com/pc/def/bodyguard.jpg" alt="bodyguard.jpg" width="30%" height="30%">
+* 网页标题是`re`
+* 题目是`One small letter, surrounded by EXACTLY three big bodyguards on each of its sides`，意思是每边**正好**有3个保镖的小写字母
+
+结合图片看这个题目挺有意思，中间是一根小蜡烛，两边各有三根大蜡烛<br>
+惯例先打开网页源码[view-source](view-source:http://www.pythonchallenge.com/pc/def/equality.html)，果然又有一长串乱码：
+> kAewtloYgcFQaJNhHVGxXDiQmzjfcpYbzxlWrVcqsmUbCunkfxZWDZjUZMiGqhRRiUvGmYmvnJIHEmbT<br>
+> MUKLECKdCt...
+
+这回貌似只有字母了，我们先将它取出来：
+
+
+```python
+import re
+import requests
+response = requests.get('http://www.pythonchallenge.com/pc/def/equality.html').content.decode('utf-8')
+messy_str = re.findall(r'<!--(.*?)-->', response, re.S)[0]
+```
+
+通过分析网页的提示，应该是让我们找出两边**正好**有三个大写字母的小写字母<br>
+结合网页标题`re`，很好想到用正则就很容易：
+
+
+```python
+small_letters = re.findall(r'[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]', messy_str)
+print(''.join(small_letters))
+```
+
+    linkedlist
+    
+
+注意是**正好**，所以两边还要匹配一个非大写字母（还要用`[^A-Z]`而不是`[a-z]`，因为后者匹配不到行首和行尾）。<br>
+把结果输入到地址栏[linkedlist.html](http://www.pythonchallenge.com/pc/def/linkedlist.html)得到
+> linkedlist.php
+
+再将地址改成[linkedlist.php](http://www.pythonchallenge.com/pc/def/linkedlist.php)，果然是下一题！
+
+### 总结：这一题也很简单，前提是正则玩得溜。事实上，遍历取出连续9个字符做判断也是可行的，就是代码繁琐一点。
+###### 本题代码地址[3_equality.ipynb](https://github.com/StevenPZChan/pythonchallenge/blob/notebook/nbfiles/3_equality.ipynb)
