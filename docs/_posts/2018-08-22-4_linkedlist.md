@@ -7,6 +7,7 @@ tags:
   - challenge
 last_modified_at: 2018-08-22T10:40:00+08:00
 ---
+
 继续挑战
 
 ---
@@ -48,7 +49,7 @@ for i in range(400):
 
     nothing = 16044
     Yes. Divide by two and keep going.
-    
+
 
 有意思的是，在第二次的时候会提示`Your hands are getting tired`，正好说明了不建议手工操作:D<br>
 在若干次之后停了下来，显示
@@ -74,7 +75,7 @@ for i in range(400):
 
     nothing = 66831
     peak.html
-    
+
 
 若干次之后也停了下来（中间出现了一次`There maybe misleading numbers in the text. One example is 82683. Look only for the next nothing and the next nothing is 63579`，说明不能光区配数字来取结果，不然就是
 [nothing=82683](http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=82683)：
