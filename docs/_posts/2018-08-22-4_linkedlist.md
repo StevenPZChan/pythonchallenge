@@ -37,14 +37,15 @@ import re
 import requests
 url = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
 nothing = '12345'
-for i in range(400):
-    response = requests.get(url + nothing).text
-    result = re.findall(r'next nothing is (\d+)', response)
-    if not result:
-        print('nothing =', nothing)
-        print(response)
-        break
-    nothing = result[0]
+with requests.Session() as sess:
+    for i in range(400):
+        response = sess.get(url + nothing).text
+        result = re.findall(r'next nothing is (\d+)', response)
+        if not result:
+            print('nothing =', nothing)
+            print(response)
+            break
+        nothing = result[0]
 ```
 
     nothing = 16044
@@ -63,14 +64,15 @@ import re
 import requests
 url = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
 nothing = str(16044 / 2)
-for i in range(400):
-    response = requests.get(url + nothing).text
-    result = re.findall(r'next nothing is (\d+)', response)
-    if not result:
-        print('nothing =', nothing)
-        print(response)
-        break
-    nothing = result[0]
+with requests.Session() as sess:
+    for i in range(400):
+        response = sess.get(url + nothing).text
+        result = re.findall(r'next nothing is (\d+)', response)
+        if not result:
+            print('nothing =', nothing)
+            print(response)
+            break
+        nothing = result[0]
 ```
 
     nothing = 66831
